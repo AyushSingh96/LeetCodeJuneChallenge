@@ -1,0 +1,25 @@
+class Solution {
+    public int twoCitySchedCost(int[][] costs) {
+     
+        Comparator<int[]> comparator = (a, b) -> Math.abs(b[0] - b[1]) - Math.abs(a[0] - a[1]);
+        Arrays.sort(costs, comparator);
+        
+        int N = costs.length / 2;
+        int a = 0;
+        int b = 0;
+        int ans = 0;
+        int i = 0;
+        
+        while (i < 2 * N) {
+            if ((costs[i][0] <= costs[i][1] && a < N) || b == N) {
+                ans += costs[i++][0];
+                a++;
+            } else {
+                ans += costs[i++][1];
+                b++;
+            }
+        }
+        return ans;
+    }
+        
+    }
