@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+    int tallyCount=0;  
+    int index=0;
+ 
+    for(int i = 0; i<s.length(); i++ ){       
+        if(i != tallyCount){return false;} 
+      
+        for(int j=index; j<t.length();j++){
+            if(s.charAt(i)==t.charAt(j)){
+                tallyCount++;
+                index = j+1;
+                break;
+            }
+        }
+    }
+        
+    if(tallyCount == s.length()){return true;}
+    else{return false;} 
+    }
+}
